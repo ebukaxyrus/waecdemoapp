@@ -21,7 +21,7 @@
 
 [**Launch the live interactive application**](https://waecdemoapp.streamlit.app/) to view its actual interface.
 
-> Screenshot pending: No verified application screenshot file was available for documentation. Add an actual captured image at `docs/screenshots/app-preview.png` and replace this note with `![Application preview](docs/screenshots/app-preview.png)` after confirming it reflects the deployed interface. Do not use a mockup presented as a real screenshot.
+![Actual application screenshot](docs/screenshots/app-preview.png)
 
 ## The problem and approach
 
