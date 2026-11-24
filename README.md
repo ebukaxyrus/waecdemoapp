@@ -1,52 +1,117 @@
-# WAEC English Mastery (Streamlit)
+# WAEC English Mastery
 
-An examination-practice prototype using structured WAEC English question datasets.
+[![Live Streamlit App](https://img.shields.io/badge/Live%20Demo-Streamlit-FF4B4B?logo=streamlit&logoColor=white)](https://waecdemoapp.streamlit.app/) [![Portfolio](https://img.shields.io/badge/Portfolio-Xyrus-0B7786)](https://xyrusportfolio.netlify.app/)
+
+> A Streamlit-based WAEC English question-practice application using structured year-specific CSV datasets, session-level quiz state and optional AI explanations with audio.
+
+**Live demo:** https://waecdemoapp.streamlit.app/  
+**Project documentation and source:** https://github.com/ebukaxyrus/waecdemoapp  
+**Maintainer:** Dimakunne Chukwuebuka Francis
+
+## At a glance
+
+| Area | Details |
+| --- | --- |
+| Category | Exam Preparation / EdTech |
+| Application framework | Streamlit |
+| Entry point | `check3.py` |
+| Deployment | [Open live application](https://waecdemoapp.streamlit.app/) |
+
+## Application preview
+
+[**Launch the live interactive application**](https://waecdemoapp.streamlit.app/) to view its actual interface.
+
+> Screenshot pending: No verified application screenshot file was available for documentation. Add an actual captured image at `docs/screenshots/app-preview.png` and replace this note with `![Application preview](docs/screenshots/app-preview.png)` after confirming it reflects the deployed interface. Do not use a mockup presented as a real screenshot.
+
+## The problem and approach
+
+A Streamlit-based WAEC English question-practice application using structured year-specific CSV datasets, session-level quiz state and optional AI explanations with audio.
+
+The app reads its question records from local CSV datasets. Streamlit session state tracks the current question, answers, score, selected year and explanation cache. Additional explanation generation depends on the configured OpenAI API client. Quiz outcome metrics are based on the app's answer data; they are **not** an independent measure of learning effectiveness.
+
+## Features
+
+- Load WAEC English question CSV files across the years included in this repository (2015–2024).
+- Navigate questions with answer choices and progress tracking.
+- Track submitted, attempted and skipped questions in Streamlit session state.
+- Calculate score, attempted-question accuracy and an end-of-quiz summary.
+- Provide an option to download quiz results as CSV.
+- Include an OpenAI-based explanation integration when configured and generate audio from explanations where available.
 
 ## Technology stack
+
 - Python
 - Streamlit
 - Pandas
-- OpenAI SDK
+- OpenAI Python SDK
 - gTTS
 
-## Verified implementation
-- Provides a styled examination interface
-- stores year-specific CSV question files
-- includes OpenAI and text-to-speech integrations in code.
+## Repository structure
 
-## Getting started
+- `check3.py` — application UI, dataset loading, quiz state, result export and optional explanation functions.
+- `waec_english_2015_complete.csv` through `waec_english_2024_complete.csv` — structured question data.
+- `requirements.txt` — Python dependencies.
+
+## Run locally
+
+Prerequisites: Python 3.10+ is a reasonable starting environment, but no fixed compatibility matrix has been independently tested. Check the dependency versions actually available for your environment.
 
 ```bash
 git clone https://github.com/ebukaxyrus/waecdemoapp.git
 cd waecdemoapp
 python -m venv .venv
-source .venv/bin/activate  # Windows PowerShell: .venv\Scripts\Activate.ps1
-pip install -r requirements.txt
+```
+
+Activate the environment:
+
+```bash
+# macOS or Linux
+source .venv/bin/activate
+# Windows PowerShell
+# .venv\\Scripts\\Activate.ps1
+```
+
+Install packages and start the app:
+
+```bash
+python -m pip install -r requirements.txt
 streamlit run check3.py
 ```
 
-Review the source for required API credentials, data files, local environment settings, and device permissions before running. Never commit real API keys or passwords.
+For optional AI explanation functionality, configure the OpenAI credentials expected by the code. Keep keys in environment variables or Streamlit secrets, never GitHub source. Audio may require network access.
 
-## Important limitations
+## How to use
 
-Verify that deployed AI/audio features work with configured credentials and that examination question content is legally publishable.
+1. Start the app and select an available examination year.
+2. Read the question and choose an answer or skip when offered.
+3. Submit answers and navigate through the set.
+4. Review the performance summary and download available results.
+5. Use explanation/audio tools only when the required API integration is configured.
 
-## Project structure
+## Limitations and responsible use
 
-- `check3.py`: primary application entry point.
-- `requirements.txt`: Python package requirements.
-- `waec_english_*_complete.csv`: year-specific question data files.
+- Question text and answers should be checked against original examination papers; do not assume a dataset is error-free.
+- Confirm legal permission to publicly redistribute examination materials.
+- AI explanations require a valid supported API configuration and can be imperfect.
+- Generated audio availability depends on runtime connectivity and configuration.
+- Do not describe the app as an official WAEC service or claim official affiliation.
 
-## Suggested next improvements
+## Quality and future improvements
 
-- [ ] Test installation from scratch and pin versions.
-- [ ] Include real screenshots, verified live URL and a demo walkthrough.
-- [ ] Add automated tests and document tested configuration.
-- [ ] Verify source/data rights and operational security.
+- [ ] Test a clean installation and pin compatible dependency versions.
+- [ ] Add real screenshots, alt text and demonstration media.
+- [ ] Add automated tests for primary use cases and invalid input.
+- [ ] Review accessibility, error handling and mobile usability.
+- [ ] Verify datasets, licenses, user privacy, and live deployment behavior.
 
-## Maintainer
+## Maintainer and links
 
 **Dimakunne Chukwuebuka Francis**  
-[GitHub](https://github.com/ebukaxyrus) · [Portfolio](https://xyrusportfolio.netlify.app/) · [XY AI Solution](https://xyaisolution.online/)
+Head of Data & Artificial Intelligence, Schoolville ICT Hub  
+Founder, XY AI Solution
 
-*Documentation is grounded in source review; the application was not independently deployed or benchmarked for this update.*
+- [Professional portfolio](https://xyrusportfolio.netlify.app/)
+- [GitHub profile](https://github.com/ebukaxyrus)
+- [XY AI Solution](https://xyaisolution.online/)
+
+**Documentation scope:** Written from repository source inspection; successful clean-environment installation and end-to-end live application behavior have not been independently verified.
